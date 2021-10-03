@@ -138,7 +138,7 @@ Uint8List base58ToBinary(int size, String s) {
 /// Convert `bignum` to a base-58 number
 /// @param minDigits 0-pad result to this many digits
 String binaryToBase58(Uint8List bignum, {minDigits = 1}) {
-  var result = List<int>();
+  var result = [];
   for (var byte in bignum) {
     var carry = byte;
     for (var j = 0; j < result.length; ++j) {
@@ -158,7 +158,7 @@ String binaryToBase58(Uint8List bignum, {minDigits = 1}) {
       result.add('1'.codeUnitAt(0));
     }
   }
-  return String.fromCharCodes(result.reversed.toList());
+  return String.fromCharCodes(result.reversed.toList() as Iterable<int>);
 }
 
 /// Convert an unsigned base-64 number in `s` to a bignum
